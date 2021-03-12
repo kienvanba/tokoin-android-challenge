@@ -17,9 +17,11 @@
         android:orientation="vertical"
         android:background="@color/white_selectable_background">
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/cover_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
+            android:transitionName="cover"
             app:placeholder="@{ @drawable/image_placeholder }"
             app:loadImage="@{ item.urlToImage }"/>
         <androidx.appcompat.widget.AppCompatTextView

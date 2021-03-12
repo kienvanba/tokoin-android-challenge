@@ -14,13 +14,16 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
+import org.koin.android.ext.android.inject
 import vn.kien.tokoinchallenge.R
+import vn.kien.tokoinchallenge.data.local.DataTransferHelper
 
 abstract class TokoinFragment<ViewBinding: ViewDataBinding, ViewModel: TokoinViewModel> : Fragment() {
     protected abstract val bindingVariable: Int
     @get:LayoutRes
     protected abstract val layoutId: Int
     abstract val viewModel: ViewModel
+    protected val dataTransferHelper: DataTransferHelper by inject()
 
     protected lateinit var viewBinding: ViewBinding
 

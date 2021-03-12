@@ -15,18 +15,18 @@ class NewsAdapter : TokoinRecyclerAdapter<News, ViewDataBinding>(object : DiffUt
         return oldItem.source.id == newItem.source.id
     }
 }) {
-    private var listener: ((News) -> Unit)? = null
+    private var listener: ((News, ViewDataBinding) -> Unit)? = null
 
     override val layoutId: Int
         get() = R.layout.layout_news_item
 
     override fun bindView(binding: ViewDataBinding, item: News, position: Int) {
         binding.root.setOnClickListener {
-            listener?.invoke(item)
+            listener?.invoke(item, binding)
         }
     }
 
-    fun setItemClickListener(l : ((News) -> Unit)?) {
+    fun setItemClickListener(l : ((News, ViewDataBinding) -> Unit)?) {
         listener = l
     }
 }

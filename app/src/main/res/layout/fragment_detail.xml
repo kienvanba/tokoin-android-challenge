@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -8,16 +9,60 @@
             type="vn.kien.tokoinchallenge.ui.fragment.detail.DetailViewModel" />
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".ui.fragment.detail.DetailFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/detail" />
-
-    </FrameLayout>
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:transitionName="full_cover"
+            app:placeholder="@{ @drawable/image_placeholder }"
+            app:loadImage="@{ viewModel.news.urlToImage }"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/x_common"
+                android:text="@{ viewModel.news.author }"
+                tools:text="Author"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/x_common"
+                android:textAlignment="textEnd"
+                android:textStyle="italic"
+                android:text="@{ viewModel.news.getPublishDateString() }"
+                tools:text="dd/mm/yyyy hh:mm:ss"/>
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/x_common"
+            android:paddingEnd="@dimen/x_common"
+            android:paddingTop="@dimen/common"
+            android:paddingBottom="@dimen/common"
+            android:textSize="@dimen/text_large"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="@{ viewModel.news.title }"
+            tools:text="Title"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/x_common"
+            android:paddingEnd="@dimen/x_common"
+            android:paddingTop="@dimen/common"
+            android:paddingBottom="@dimen/common"
+            android:textColor="@color/black"
+            android:text="@{ viewModel.news.content }"
+            tools:text="Content"/>
+    </LinearLayout>
 </layout>

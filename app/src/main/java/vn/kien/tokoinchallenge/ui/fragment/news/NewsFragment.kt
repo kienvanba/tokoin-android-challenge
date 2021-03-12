@@ -4,12 +4,16 @@ import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_news.view.*
+import kotlinx.android.synthetic.main.layout_news_item.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import vn.kien.tokoinchallenge.BR
 import vn.kien.tokoinchallenge.R
 import vn.kien.tokoinchallenge.ui.base.TokoinFragment
+import vn.kien.tokoinchallenge.ui.fragment.detail.DetailFragment
 import vn.kien.tokoinchallenge.util.TokoinLogger
 import vn.kien.tokoinchallenge.util.setupLayout
 
@@ -41,8 +45,12 @@ class NewsFragment(private val type: NewsType) : TokoinFragment<ViewDataBinding,
         TokoinLogger.e("init fragment($this) with -> $type")
 
         val newsAdapter = NewsAdapter().apply {
-            setItemClickListener {
-                //
+            setItemClickListener { news, binding ->
+                val bundle = Bundle().apply {
+                    putString(DetailFragment.NEWS, dataTransferHelper.push(news))
+                }
+                val extras = FragmentNavigatorExtras(binding.root.cover_img to "full_cover")
+                navigate(R.id.detail_fragment, args = bundle, extras = extras)
             }
         }
 
