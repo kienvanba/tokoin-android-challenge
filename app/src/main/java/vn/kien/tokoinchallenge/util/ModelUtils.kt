@@ -1,4 +1,6 @@
 package vn.kien.tokoinchallenge.util
 
-class ModelUtils {
-}
+import java.text.SimpleDateFormat
+import java.util.*
+
+val Date.appString get() = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(this)

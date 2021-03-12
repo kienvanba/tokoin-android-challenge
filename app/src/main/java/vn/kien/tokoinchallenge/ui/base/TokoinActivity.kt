@@ -24,4 +24,9 @@ abstract class TokoinActivity<ViewBinding: ViewDataBinding, ViewModel: TokoinVie
             executePendingBindings()
         }
     }
+
+    override fun onDestroy() {
+        viewModel.onViewDestroyed()
+        super.onDestroy()
+    }
 }

@@ -31,4 +31,9 @@ abstract class TokoinFragment<ViewBinding: ViewDataBinding, ViewModel: TokoinVie
             executePendingBindings()
         }
     }
+
+    override fun onDestroy() {
+        viewModel.onViewDestroyed()
+        super.onDestroy()
+    }
 }

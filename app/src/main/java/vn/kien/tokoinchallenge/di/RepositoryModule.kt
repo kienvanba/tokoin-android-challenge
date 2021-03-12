@@ -8,6 +8,6 @@ import vn.kien.tokoinchallenge.data.repository.AppRepositoryImpl
 
 val repositoryModule = module(override = true) {
     single { Gson() }
-    single { AppPref(get()) }
-    single<AppRepository> { AppRepositoryImpl() }
+    single { AppPref(get(), get()) }
+    single<AppRepository> { AppRepositoryImpl(get(), get()) }
 }

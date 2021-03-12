@@ -17,13 +17,13 @@ abstract class TokoinRecyclerAdapter<Item, ViewBinding: ViewDataBinding>(callbac
         Executors.newSingleThreadExecutor()).build()) {
 
     @get:LayoutRes
-    abstract val layoutResId: Int
+    abstract val layoutId: Int
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TokoinViewHolder<ViewBinding> {
         return TokoinViewHolder(
             DataBindingUtil.inflate<ViewBinding>(
             LayoutInflater.from(parent.context),
-            layoutResId,
+            layoutId,
             parent,
             false
         ).apply { bindFirstTime(this)})
