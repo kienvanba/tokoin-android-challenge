@@ -3,6 +3,8 @@
 
     <!-- home -->
     <string name="home">Home</string>
+    <string name="headline">Headline</string>
+    <string name="custom">Custom</string>
 
     <!-- profile -->
     <string name="profile">Profile</string>

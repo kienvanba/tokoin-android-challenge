@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -7,9 +8,53 @@
             type="vn.kien.tokoinchallenge.model.News" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/common"
+        android:paddingBottom="@dimen/common"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/x_common"
+            android:paddingEnd="@dimen/x_common"
+            android:paddingTop="@dimen/common"
+            android:paddingBottom="@dimen/common"
+            android:textSize="@dimen/text_large"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:text="Title"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/x_common"
+            android:paddingEnd="@dimen/x_common"
+            android:paddingTop="@dimen/common"
+            android:paddingBottom="@dimen/common"
+            android:textColor="@color/black"
+            tools:text="Descriptions"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/x_common"
+                android:text="@{ item.author }"
+                tools:text="Author"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/x_common"
+                android:textAlignment="textEnd"
+                android:textStyle="italic"
+                tools:text="dd/mm/yyyy hh:mm:ss"/>
+        </LinearLayout>
+    </LinearLayout>
 </layout>

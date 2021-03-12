@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="common">8dp</dimen>
+    <dimen name="x_common">16dp</dimen>
+    <dimen name="text_large">24sp</dimen>
+</resources>

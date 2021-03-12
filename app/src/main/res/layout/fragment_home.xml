@@ -8,16 +8,41 @@
             type="vn.kien.tokoinchallenge.ui.fragment.home.HomeViewModel" />
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".ui.fragment.home.HomeFragment">
-
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <RadioGroup
+            android:id="@+id/section_group"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/home" />
-
-    </FrameLayout>
+            android:layout_height="wrap_content"
+            android:padding="@dimen/common"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/headline_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/common"
+                android:checked="true"
+                android:text="@string/headline"/>
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/custom_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/common"
+                android:text="@string/custom"/>
+        </RadioGroup>
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/news_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="5"
+                tools:listitem="@layout/layout_news_item"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </LinearLayout>
 </layout>
