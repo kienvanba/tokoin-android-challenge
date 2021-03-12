@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/home_fragment">
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="vn.kien.tokoinchallenge.ui.fragment.home.HomeFragment"
+        tools:layout="@layout/fragment_home"
+        android:label="@string/home" >
+        <action
+            android:id="@+id/action_home_fragment_to_detail_fragment"
+            app:destination="@id/detail_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile_fragment"
+        android:name="vn.kien.tokoinchallenge.ui.fragment.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile"
+        android:label="@string/profile" />
+    <fragment
+        android:id="@+id/detail_fragment"
+        android:name="vn.kien.tokoinchallenge.ui.fragment.detail.DetailFragment"
+        tools:layout="@layout/fragment_detail"
+        android:label="DetailFragment" />
+</navigation>

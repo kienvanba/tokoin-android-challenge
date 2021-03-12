@@ -5,19 +5,19 @@
     <data>
         <variable
             name="viewModel"
-            type="vn.kien.tokoinchallenge.ui.fragment.home.HomeViewModel" />
+            type="vn.kien.tokoinchallenge.ui.fragment.profile.ProfileViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragment.home.HomeFragment">
+        tools:context=".ui.fragment.profile.ProfileFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/home" />
+            android:text="@string/profile" />
 
     </FrameLayout>
 </layout>
