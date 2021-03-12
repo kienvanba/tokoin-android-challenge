@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="vn.kien.tokoinchallenge.ui.fragment.home.HomeViewModel" />
@@ -15,56 +14,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".ui.fragment.home.HomeFragment">
-        <RadioGroup
-            android:id="@+id/section_group"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/common"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/headline_radio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/common"
-                android:checked="true"
-                android:text="@string/headline"/>
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/custom_radio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/common"
-                android:text="@string/custom"/>
-        </RadioGroup>
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:background="@android:color/transparent"
+            app:tabTextAppearance="@style/TabTheme"
+            app:tabMode="scrollable"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:isRefreshing="@{ viewModel.isRefreshingData }"
-            app:onRefreshListener="@{ viewModel.onRefreshListener }">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/news_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    app:onScrollListener="@{ viewModel.onScrollListener }"
-                    tools:itemCount="5"
-                    tools:listitem="@layout/layout_news_item"/>
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/common"
-                    android:layout_marginBottom="@dimen/common"
-                    android:visibility="@{ viewModel.isShowLoadMore ? View.VISIBLE : View.GONE }">
-                    <ProgressBar
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"/>
-                </FrameLayout>
-            </LinearLayout>
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
     </LinearLayout>
 </layout>

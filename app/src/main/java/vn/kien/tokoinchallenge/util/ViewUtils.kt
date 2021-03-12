@@ -39,11 +39,11 @@ fun SwipeRefreshLayout.customRefreshing(refreshing: Boolean?) {
 }
 
 @BindingAdapter(
-    value = ["loadImage", "placeholder", "centerCrop", "fitCenter", "centerInside", "animation"],
+    value = ["loadImage", "placeholder", "centerCrop", "fitCenter", "centerInside", "animation", "completion"],
     requireAll = false)
 fun ImageView.loadImage(url: String? = "", placeHolder: Drawable?,
                         centerCrop: Boolean = false, fitCenter: Boolean = false, centerInside: Boolean = false,
-                        animation: Boolean = false) {
+                        animation: Boolean = false, completion: ((Boolean) -> Unit)? = null) {
 
     val requestCreator = Picasso.get().load(url?.trim())
     requestCreator.networkPolicy(NetworkPolicy.OFFLINE)
@@ -52,5 +52,21 @@ fun ImageView.loadImage(url: String? = "", placeHolder: Drawable?,
     if (fitCenter) requestCreator.fit()
     if (centerInside) requestCreator.centerInside()
     placeHolder?.also { requestCreator.placeholder(it) }
-    requestCreator.into(this)
+    requestCreator.into(this, object : Callback {
+        override fun onSuccess() { completion?.invoke(true) }
+
+        override fun onError(e: Exception?) {
+            val req = Picasso.get().load(url)
+            if (!animation) req.noFade()
+            if (centerCrop) req.fit().centerCrop()
+            if (fitCenter) req.fit()
+            if (centerInside) req.centerInside()
+            placeHolder?.also { req.placeholder(it) }
+            req.into(this@loadImage, object : Callback {
+                override fun onSuccess() { completion?.invoke(true) }
+
+                override fun onError(e: Exception?) { completion?.invoke(false) }
+            })
+        }
+    })
 }

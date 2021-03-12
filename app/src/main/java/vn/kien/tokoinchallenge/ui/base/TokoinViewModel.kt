@@ -15,8 +15,7 @@ open class TokoinViewModel : ViewModel() {
     val isShowLoading = MutableLiveData(false)
     val errorMessage = MutableLiveData<String>()
 
-    protected fun onLoadFail(throwable: Throwable) {
-        hideLoading()
+    protected open fun onLoadFail(throwable: Throwable) {
         try {
             when (throwable.cause) {
                 is UnknownHostException, is ConnectException -> {
@@ -32,6 +31,7 @@ open class TokoinViewModel : ViewModel() {
         } catch (e: Exception) {
             errorMessage.value = throwable.message
         }
+        hideLoading()
     }
 
     open fun showLoading() {

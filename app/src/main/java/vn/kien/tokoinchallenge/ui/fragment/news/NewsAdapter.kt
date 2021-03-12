@@ -1,4 +1,4 @@
-package vn.kien.tokoinchallenge.ui.fragment.home
+package vn.kien.tokoinchallenge.ui.fragment.news
 
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil

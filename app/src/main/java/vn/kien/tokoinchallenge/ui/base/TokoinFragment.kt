@@ -4,10 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
+import androidx.annotation.Nullable
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
+import vn.kien.tokoinchallenge.R
 
 abstract class TokoinFragment<ViewBinding: ViewDataBinding, ViewModel: TokoinViewModel> : Fragment() {
     protected abstract val bindingVariable: Int
@@ -30,6 +37,31 @@ abstract class TokoinFragment<ViewBinding: ViewDataBinding, ViewModel: TokoinVie
             lifecycleOwner = this@TokoinFragment
             executePendingBindings()
         }
+    }
+
+    protected val slideInFromRight = navOptions {
+        anim {
+            enter = R.anim.translate_slide_in_right
+            exit = R.anim.translate_slide_out_left
+            popEnter = R.anim.translate_slide_in_left
+            popExit = R.anim.translate_slide_out_right
+        }
+    }
+
+    fun navigate(@IdRes resId: Int, @Nullable args: Bundle? = null,
+                 @Nullable navOptions: NavOptions? = null, @Nullable extras: FragmentNavigator.Extras? = null
+    ) {
+        findNavController().navigate(resId, args, navOptions, extras)
+    }
+
+    fun navigate(@IdRes resId: Int, @Nullable args: Bundle? = null,
+                 @Nullable navOptions: NavOptions? = null
+    ) {
+        findNavController().navigate(resId, args, navOptions)
+    }
+
+    fun navigate(@IdRes resId: Int) {
+        findNavController().navigate(resId)
     }
 
     override fun onDestroy() {

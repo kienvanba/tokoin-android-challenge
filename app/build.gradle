@@ -75,6 +75,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
     implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // others
     testImplementation 'junit:junit:4.13.2'
