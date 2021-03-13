@@ -22,6 +22,13 @@
     <fragment
         android:id="@+id/detail_fragment"
         android:name="vn.kien.tokoinchallenge.ui.fragment.detail.DetailFragment"
-        tools:layout="@layout/fragment_detail"
-        android:label="DetailFragment" />
+        tools:layout="@layout/fragment_detail">
+        <action
+            android:id="@+id/action_detail_fragment_to_web_view_fragment"
+            app:destination="@id/web_view_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/web_view_fragment"
+        android:name="vn.kien.tokoinchallenge.ui.fragment.webview.WebViewFragment"
+        tools:layout="@layout/fragment_web_view" />
 </navigation>

@@ -1,7 +1,10 @@
 package vn.kien.tokoinchallenge.util
 
 import android.graphics.drawable.Drawable
+import android.os.Build
+import android.text.Html
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,6 +39,15 @@ fun SwipeRefreshLayout.customRefreshListener(listener: SwipeRefreshLayout.OnRefr
 @BindingAdapter("isRefreshing")
 fun SwipeRefreshLayout.customRefreshing(refreshing: Boolean?) {
     isRefreshing = refreshing == true
+}
+
+@BindingAdapter("html")
+fun TextView.setHtml(html: String = "") {
+    text = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+        Html.fromHtml(html)
+    } else {
+        Html.fromHtml(html, Html.FROM_HTML_MODE_COMPACT)
+    }
 }
 
 @BindingAdapter(

@@ -42,14 +42,21 @@ class NewsFragment(private val type: NewsType) : TokoinFragment<ViewDataBinding,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        TokoinLogger.e("init fragment($this) with -> $type")
-
         val newsAdapter = NewsAdapter().apply {
             setItemClickListener { news, binding ->
                 val bundle = Bundle().apply {
                     putString(DetailFragment.NEWS, dataTransferHelper.push(news))
                 }
-                val extras = FragmentNavigatorExtras(binding.root.cover_img to "full_cover")
+                binding.root.apply {
+                    cover_img.transitionName = "full_cover"
+                    title_tv.transitionName = "title"
+                    info_layout.transitionName = "info"
+                }
+                val extras = FragmentNavigatorExtras(
+                    binding.root.cover_img to "full_cover",
+                    binding.root.title_tv to "title",
+                    binding.root.info_layout to "info"
+                )
                 navigate(R.id.detail_fragment, args = bundle, extras = extras)
             }
         }
@@ -65,8 +72,7 @@ class NewsFragment(private val type: NewsType) : TokoinFragment<ViewDataBinding,
         }
 
         viewModel.apply {
-            itemList.observe(viewLifecycleOwner, Observer {
-                TokoinLogger.e("submit list [$type] -> ${it.size}")
+            itemList.observe(viewLifecycleOwner, {
                 newsAdapter.submitList(it)
             })
         }

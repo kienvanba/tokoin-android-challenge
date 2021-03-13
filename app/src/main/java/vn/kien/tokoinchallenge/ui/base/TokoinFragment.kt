@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.Nullable
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -24,6 +25,11 @@ abstract class TokoinFragment<ViewBinding: ViewDataBinding, ViewModel: TokoinVie
     protected abstract val layoutId: Int
     abstract val viewModel: ViewModel
     protected val dataTransferHelper: DataTransferHelper by inject()
+    protected var title: String = TokoinFragment::class.java.simpleName
+        set(value) {
+            field = value
+            (activity as? AppCompatActivity)?.supportActionBar?.title = value
+        }
 
     protected lateinit var viewBinding: ViewBinding
 

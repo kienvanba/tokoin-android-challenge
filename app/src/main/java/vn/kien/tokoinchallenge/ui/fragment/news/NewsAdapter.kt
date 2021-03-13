@@ -1,7 +1,9 @@
 package vn.kien.tokoinchallenge.ui.fragment.news
 
+import android.widget.ImageView
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
+import kotlinx.android.synthetic.main.layout_news_item.view.*
 import vn.kien.tokoinchallenge.R
 import vn.kien.tokoinchallenge.model.News
 import vn.kien.tokoinchallenge.ui.base.TokoinRecyclerAdapter

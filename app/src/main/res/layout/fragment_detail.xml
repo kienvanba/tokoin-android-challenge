@@ -25,6 +25,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:transitionName="info"
             android:orientation="horizontal">
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -52,6 +53,7 @@
             android:textSize="@dimen/text_large"
             android:textColor="@color/black"
             android:textStyle="bold"
+            android:transitionName="title"
             android:text="@{ viewModel.news.title }"
             tools:text="Title"/>
         <androidx.appcompat.widget.AppCompatTextView
@@ -62,7 +64,21 @@
             android:paddingTop="@dimen/common"
             android:paddingBottom="@dimen/common"
             android:textColor="@color/black"
-            android:text="@{ viewModel.news.content }"
+            app:html="@{ viewModel.news.content }"
             tools:text="Content"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/full_post_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="@dimen/common"
+            android:background="@color/white_selectable_background"
+            android:textColor="@color/action_text"
+            android:textAllCaps="false"
+            android:textStyle="italic"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="@dimen/common"
+            android:text="@string/original_post"/>
     </LinearLayout>
 </layout>

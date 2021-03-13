@@ -16,5 +16,6 @@
     <string name="no_news">No news available at the moment</string>
     <string name="no_preference">You haven\'t had any preference yet. </string>
     <string name="add_preference"><u>Add preference</u></string>
+    <string name="original_post"><u>to original post -></u></string>
 
 </resources>
