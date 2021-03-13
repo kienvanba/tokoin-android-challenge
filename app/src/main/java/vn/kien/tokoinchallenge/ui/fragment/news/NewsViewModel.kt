@@ -6,7 +6,6 @@ import io.reactivex.schedulers.Schedulers
 import vn.kien.tokoinchallenge.data.repository.AppRepository
 import vn.kien.tokoinchallenge.model.News
 import vn.kien.tokoinchallenge.ui.base.TokoinRecyclerViewModel
-import vn.kien.tokoinchallenge.util.TokoinLogger
 
 class NewsViewModel(private val appRepository: AppRepository) : TokoinRecyclerViewModel<News>() {
     lateinit var type: NewsType
@@ -17,7 +16,6 @@ class NewsViewModel(private val appRepository: AppRepository) : TokoinRecyclerVi
             NewsType.Headline -> { loadHeadlines(page) }
             NewsType.Custom -> { loadCustoms(page) }
         }
-        TokoinLogger.e("load data -> $type")
     }
 
     private fun loadCustoms(page: Int) {
@@ -34,6 +32,7 @@ class NewsViewModel(private val appRepository: AppRepository) : TokoinRecyclerVi
                     onLoadFail(it)
                 }))
         } else {
+            itemList.value = listOf()
             hideLoading()
         }
     }

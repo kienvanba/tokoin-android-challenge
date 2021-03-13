@@ -8,16 +8,52 @@
             type="vn.kien.tokoinchallenge.ui.fragment.profile.ProfileViewModel" />
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/x_common"
         tools:context=".ui.fragment.profile.ProfileFragment">
-
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/greeting"
+                android:textColor="@color/black"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/name_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:textColor="@color/action_text"
+                android:textStyle="bold|italic"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:layout_marginStart="@dimen/small"
+                android:background="@color/white_selectable_background"/>
+        </LinearLayout>
+        <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/profile" />
-
-    </FrameLayout>
+            android:layout_height="@dimen/thin_line"
+            android:background="@color/black_64"
+            android:layout_marginStart="@dimen/x_common"
+            android:layout_marginEnd="@dimen/x_common"
+            android:layout_marginTop="@dimen/large"
+            android:layout_marginBottom="@dimen/common"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/preferences"
+            android:textStyle="bold|italic"
+            android:textColor="@color/black"/>
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/preferences_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x_common"/>
+    </LinearLayout>
 </layout>

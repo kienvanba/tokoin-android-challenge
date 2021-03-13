@@ -53,6 +53,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'com.google.android:flexbox:2.0.1'
 
     // navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
@@ -75,7 +76,6 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
     implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // others
     testImplementation 'junit:junit:4.13.2'

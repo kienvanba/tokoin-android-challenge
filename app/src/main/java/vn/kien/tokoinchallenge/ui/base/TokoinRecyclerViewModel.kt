@@ -40,6 +40,7 @@ abstract class TokoinRecyclerViewModel<Item> : TokoinViewModel() {
     fun onLoadSuccess(data: Response<Item>) {
         if (data.items.isEmpty() && currentPage != ApiConstants.initialPage) currentPage--
         if (currentPage == ApiConstants.initialPage) {
+            itemList.value = listOf()
             itemList.value = data.items
             onScrollListener.resetOnLoadMore()
         } else {

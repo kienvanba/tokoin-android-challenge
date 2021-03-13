@@ -3,8 +3,6 @@ package vn.kien.tokoinchallenge.ui.fragment.news
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.Observer
-import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_news.view.*
@@ -14,7 +12,6 @@ import vn.kien.tokoinchallenge.BR
 import vn.kien.tokoinchallenge.R
 import vn.kien.tokoinchallenge.ui.base.TokoinFragment
 import vn.kien.tokoinchallenge.ui.fragment.detail.DetailFragment
-import vn.kien.tokoinchallenge.util.TokoinLogger
 import vn.kien.tokoinchallenge.util.setupLayout
 
 enum class NewsType {

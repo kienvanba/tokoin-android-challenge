@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="thin_line">0.5dp</dimen>
+    <dimen name="line">1dp</dimen>
+    <dimen name="small">4dp</dimen>
     <dimen name="common">8dp</dimen>
     <dimen name="x_common">16dp</dimen>
+    <dimen name="large">32dp</dimen>
+    <dimen name="x_large">64dp</dimen>
     <dimen name="text_large">24sp</dimen>
 </resources>
