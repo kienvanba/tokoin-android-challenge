@@ -17,7 +17,7 @@ open class TokoinViewModel : ViewModel() {
 
     protected open fun onLoadFail(throwable: Throwable) {
         try {
-            when (throwable.cause) {
+            when (throwable) {
                 is UnknownHostException, is ConnectException -> {
                     errorMessage.value = "No Internet Connection"
                 }

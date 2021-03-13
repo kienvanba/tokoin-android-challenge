@@ -12,6 +12,7 @@ import vn.kien.tokoinchallenge.BR
 import vn.kien.tokoinchallenge.R
 import vn.kien.tokoinchallenge.ui.base.TokoinFragment
 import vn.kien.tokoinchallenge.ui.fragment.detail.DetailFragment
+import vn.kien.tokoinchallenge.ui.view.TextAlertDialog
 import vn.kien.tokoinchallenge.util.setupLayout
 
 enum class NewsType {
@@ -71,6 +72,9 @@ class NewsFragment(private val type: NewsType) : TokoinFragment<ViewDataBinding,
         viewModel.apply {
             itemList.observe(viewLifecycleOwner, {
                 newsAdapter.submitList(it)
+            })
+            errorMessage.observe(viewLifecycleOwner, {
+                alert(getString(R.string.error), it, negativeTitle = null)
             })
         }
     }

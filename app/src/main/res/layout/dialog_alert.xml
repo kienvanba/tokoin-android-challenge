@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="data"
+            type="vn.kien.tokoinchallenge.model.AlertData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:paddingStart="@dimen/x_common"
+            android:paddingEnd="@dimen/x_common"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.9">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="@dimen/common"
+                app:cardBackgroundColor="@color/white">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        tools:text="Title"
+                        android:padding="@dimen/common"
+                        android:layout_marginTop="@dimen/common"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="@{ data.title }"/>
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:paddingTop="@dimen/common"
+                        android:paddingBottom="@dimen/common"
+                        android:paddingStart="@dimen/x_common"
+                        android:paddingEnd="@dimen/x_common">
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="Content"
+                            android:textColor="@color/black"
+                            android:text="@{ data.content }"/>
+                    </ScrollView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/negative_btn"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:visibility="@{ data.negativeTitle == null ? View.GONE : View.VISIBLE}"
+                            android:text="@{ data.negativeTitle }"
+                            tools:text="Cancel"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textAlignment="center"
+                            android:padding="@dimen/common"
+                            android:background="@color/white_selectable_background"/>
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/positive_btn"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@{ data.positiveTitle }"
+                            android:textAllCaps="false"
+                            tools:text="Confirm"
+                            android:textColor="@color/action_text"
+                            android:textAlignment="center"
+                            android:padding="@dimen/common"
+                            android:background="@color/white_selectable_background"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

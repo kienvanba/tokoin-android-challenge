@@ -18,6 +18,8 @@ import androidx.navigation.navOptions
 import org.koin.android.ext.android.inject
 import vn.kien.tokoinchallenge.R
 import vn.kien.tokoinchallenge.data.local.DataTransferHelper
+import vn.kien.tokoinchallenge.model.AlertData
+import vn.kien.tokoinchallenge.ui.view.TextAlertDialog
 
 abstract class TokoinFragment<ViewBinding: ViewDataBinding, ViewModel: TokoinViewModel> : Fragment() {
     protected abstract val bindingVariable: Int
@@ -46,6 +48,13 @@ abstract class TokoinFragment<ViewBinding: ViewDataBinding, ViewModel: TokoinVie
             lifecycleOwner = this@TokoinFragment
             executePendingBindings()
         }
+    }
+
+    protected fun alert(title: String, message: String, positiveTitle: String = getString(R.string.confirm), negativeTitle: String? = getString(R.string.cancel), listener: TextAlertDialog.TextAlertListener? = null ) {
+        val alertData = AlertData(title, message, positiveTitle, negativeTitle)
+        val dialog = TextAlertDialog(alertData)
+        dialog.setAlertListener(listener)
+        dialog.show(childFragmentManager, "text-alert")
     }
 
     protected val slideInFromRight = navOptions {
