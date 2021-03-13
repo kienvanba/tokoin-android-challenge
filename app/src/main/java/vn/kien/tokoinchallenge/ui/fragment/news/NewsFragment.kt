@@ -2,6 +2,7 @@ package vn.kien.tokoinchallenge.ui.fragment.news
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.doOnPreDraw
 import androidx.databinding.ViewDataBinding
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
@@ -39,6 +40,7 @@ class NewsFragment(private val type: NewsType) : TokoinFragment<ViewDataBinding,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        parentFragment?.postponeEnterTransition()
 
         val newsAdapter = NewsAdapter().apply {
             setItemClickListener { news, binding ->
@@ -66,6 +68,9 @@ class NewsFragment(private val type: NewsType) : TokoinFragment<ViewDataBinding,
             }
             add_preference_btn.setOnClickListener {
                 navigate(R.id.profile_fragment, navOptions = slideInFromRight)
+            }
+            doOnPreDraw {
+                this@NewsFragment.parentFragment?.startPostponedEnterTransition()
             }
         }
 

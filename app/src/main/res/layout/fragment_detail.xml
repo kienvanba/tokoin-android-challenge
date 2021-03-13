@@ -9,76 +9,80 @@
             type="vn.kien.tokoinchallenge.ui.fragment.detail.DetailViewModel" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         tools:context=".ui.fragment.detail.DetailFragment">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerInside"
-            android:transitionName="full_cover"
-            app:placeholder="@{ @drawable/image_placeholder }"
-            app:loadImage="@{ viewModel.news.urlToImage }"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:transitionName="info"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:transitionName="full_cover"
+                app:placeholder="@{ @drawable/image_placeholder }"
+                app:loadImage="@{ viewModel.news.urlToImage }"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:transitionName="info"
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/x_common"
+                    android:text="@{ viewModel.news.author }"
+                    tools:text="Author"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/x_common"
+                    android:textAlignment="textEnd"
+                    android:textStyle="italic"
+                    android:text="@{ viewModel.news.getPublishDateString() }"
+                    tools:text="dd/mm/yyyy hh:mm:ss"/>
+            </LinearLayout>
             <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/x_common"
+                android:paddingEnd="@dimen/x_common"
+                android:paddingTop="@dimen/common"
+                android:paddingBottom="@dimen/common"
+                android:textSize="@dimen/text_large"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:transitionName="title"
+                android:text="@{ viewModel.news.title }"
+                tools:text="Title"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/x_common"
+                android:paddingEnd="@dimen/x_common"
+                android:paddingTop="@dimen/common"
+                android:paddingBottom="@dimen/common"
+                android:textColor="@color/black"
+                app:html="@{ viewModel.news.content }"
+                tools:text="Content"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/full_post_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/x_common"
-                android:text="@{ viewModel.news.author }"
-                tools:text="Author"/>
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="@dimen/x_common"
-                android:textAlignment="textEnd"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/common"
+                android:background="@color/white_selectable_background"
+                android:textColor="@color/action_text"
+                android:textAllCaps="false"
                 android:textStyle="italic"
-                android:text="@{ viewModel.news.getPublishDateString() }"
-                tools:text="dd/mm/yyyy hh:mm:ss"/>
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="@dimen/common"
+                android:text="@string/original_post"/>
         </LinearLayout>
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/x_common"
-            android:paddingEnd="@dimen/x_common"
-            android:paddingTop="@dimen/common"
-            android:paddingBottom="@dimen/common"
-            android:textSize="@dimen/text_large"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:transitionName="title"
-            android:text="@{ viewModel.news.title }"
-            tools:text="Title"/>
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/x_common"
-            android:paddingEnd="@dimen/x_common"
-            android:paddingTop="@dimen/common"
-            android:paddingBottom="@dimen/common"
-            android:textColor="@color/black"
-            app:html="@{ viewModel.news.content }"
-            tools:text="Content"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/full_post_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="@dimen/common"
-            android:background="@color/white_selectable_background"
-            android:textColor="@color/action_text"
-            android:textAllCaps="false"
-            android:textStyle="italic"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:padding="@dimen/common"
-            android:text="@string/original_post"/>
-    </LinearLayout>
+    </ScrollView>
 </layout>
