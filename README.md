@@ -18,9 +18,8 @@ A Simple Android news application that:
 
 Application allows user to surf through and read top headlines news or news based on user's interest. :+1:
 
-<!--
-[![News List][screenshot1]] [![News Detail][screenshot2]] [![News Original][screenshot3]] [![News List][screenshot4]] [![Profile][screenshot5]]
--->
+
+![News List][screenshot1] ![News Detail][screenshot2] ![News Original][screenshot3] ![News List][screenshot4] ![Profile][screenshot5]
 
 ### Installation
 
